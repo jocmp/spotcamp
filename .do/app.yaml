@@ -1,0 +1,6 @@
+name: spotcamp
+services:
+- name: web
+  github:
+    repo: jocmp/spotcamp
+    branch: main
