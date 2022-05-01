@@ -1,0 +1,91 @@
+/**
+ * @section Grid
+ * Structure and layout
+ */
+
+/**
+ * Base wrapper class
+ */
+.container {
+	@extend .clearfix;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: var(--container-max-width);
+	width: var(--container-width);
+}
+
+
+/**
+ * Grids
+ */
+
+@media (min-width: $bp-medium) {
+
+	.row {
+		display: grid;
+		grid-template-columns: repeat(12, 1fr);
+		grid-template-rows: 1fr auto;
+		gap: 1.4%;
+	}
+
+	.row-gap-large {
+		gap: 2.4%;
+	}
+
+	.row-no-gap {
+		gap: 0;
+	}
+
+	.row-auto {
+		grid-template-columns: repeat(auto-fit, minmax(1em, 1fr));
+	}
+
+	.grid-fourth {
+		grid-column: auto / span 3;
+	}
+
+	.grid-third {
+		grid-column: auto / span 4;
+	}
+
+	.grid-two-thirds {
+		grid-column: auto / span 8;
+	}
+
+	.grid-half {
+		grid-column: auto / span 6;
+	}
+
+	.grid-three-fourths {
+		grid-column: auto / span 9;
+	}
+
+	[class*="grid-start-"] {
+		grid-row-start: 1;
+	}
+
+	.grid-start-first {
+		grid-column-start: 1;
+	}
+
+	.grid-start-fourth {
+		grid-column-start: 4;
+	}
+
+	.grid-start-third {
+		grid-column-start: 5;
+	}
+
+	.grid-start-half {
+		grid-column-start: 7;
+	}
+
+	.grid-start-two-thirds {
+		grid-column-start: 9;
+	}
+
+	.grid-start-three-fourths {
+		grid-column-start: 10;
+	}
+
+}

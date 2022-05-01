@@ -1,2 +1,2 @@
-export FLASK_APP=spotcamp/server
+export FLASK_APP=spotcamp/web/server
 export FLASK_ENV=development

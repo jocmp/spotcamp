@@ -1,0 +1,200 @@
+/**
+ * @section Overrides
+ * Nudge and tweak alignment, spacing, and visibility.
+ */
+
+
+/**
+ * Text sizes
+ */
+
+.text-small {
+	font-size: 0.9375em;
+}
+
+.text-large {
+	font-size: 1.1875em;
+	line-height: 1.4;
+
+	@media (min-width: $bp-medium) {
+		font-size: 1.3125em;
+	}
+}
+
+
+/**
+ * Text colors
+ */
+
+.text-muted {
+	color: var(--color-gray-dark);
+}
+
+
+/**
+ * Text alignment
+ */
+
+.text-center {
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.text-left {
+	text-align: left;
+}
+
+
+/**
+ * Floats
+ */
+
+.float-left {
+	float: left;
+}
+
+.float-center {
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.float-right {
+	float: right;
+}
+
+
+/**
+ * Margins
+ */
+
+.no-margin-top {
+	margin-top: 0;
+}
+
+.no-margin-bottom {
+	margin-bottom: 0;
+}
+
+.margin-top {
+	margin-top: var(--spacing);
+}
+
+.margin-bottom {
+	margin-bottom: var(--spacing);
+}
+
+.margin-bottom-small {
+	margin-bottom: 0.5em;
+}
+
+.margin-bottom-large {
+	margin-bottom: 2em;
+}
+
+
+/**
+ * Padding
+ */
+
+.no-padding-top {
+	padding-top: 0;
+}
+
+.no-padding-bottom {
+	padding-bottom: 0;
+}
+
+.padding-top {
+	padding-top: var(--spacing);
+}
+
+.padding-top-small {
+	padding-top: 0.5em;
+}
+
+.padding-top-large {
+	padding-top: 2em;
+}
+
+.padding-bottom {
+	padding-bottom: var(--spacing);
+}
+
+.padding-bottom-small {
+	padding-bottom: 0.5em;
+}
+
+.padding-bottom-large {
+	padding-bottom: 2em;
+}
+
+
+/**
+ * Accessibility
+ */
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * @link https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ *
+ * 1. For long content, line feeds are not interpreted as spaces and small width
+ *    causes content to wrap 1 word per line:
+ *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
+ */
+.visually-hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap; /* 1 */
+    width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard
+ * @link https://www.drupal.org/node/897638
+ */
+.visually-hidden.focusable:active,
+.visually-hidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    white-space: inherit;
+    width: auto;
+}
+
+
+/**
+ * Remove all animations and transitions for people that prefer not to see them
+ */
+@media (prefers-reduced-motion: reduce) {
+	* {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+
+/**
+ * Clear any floats
+ */
+.clearfix:before,
+.clearfix:after {
+	display: table;
+	content: " ";
+}
+
+.clearfix:after {
+	clear: both;
+}
