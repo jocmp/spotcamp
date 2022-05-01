@@ -1,0 +1,2 @@
+export FLASK_APP=spotcamp/server
+export FLASK_ENV=development
