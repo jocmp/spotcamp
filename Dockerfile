@@ -50,4 +50,4 @@ RUN rm Makefile
 # Make /app/* available to be imported by Python globally to better support several use cases like Alembic migrations.
 ENV PYTHONPATH=/app/
 
-CMD ["gunicorn", "-b", "0.0.0.0:8000", "web.server:app"]
+CMD ["gunicorn", "-b", "0.0.0.0:8080", "web.server:app"]

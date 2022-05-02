@@ -19,4 +19,4 @@ build-image:
 	docker build -t spotcamp:latest .
 
 run-image:
-	docker run -d -p 3030:8000 spotcamp
+	docker run -d -p 3030:8080 spotcamp
