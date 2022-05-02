@@ -1,4 +1,4 @@
-.PHONY: deps run build-styles watch-styles build-image run-image
+.PHONY: deps run build-styles style-watch build-image run-image
 
 run:
 	@poetry run flask run
@@ -6,11 +6,11 @@ run:
 build-styles:
 	sass styles:web/static/stylesheets
 
-watch-styles:
-	sass --watch spotcamp/styles:spotcamp/web/static/stylesheets
+style-watch:
+	sass --watch app/styles:4app/web/static/stylesheets
 
 build:
-	sass spotcamp/styles:spotcamp/web/static/stylesheets
+	sass app/styles:app/web/static/stylesheets
 
 deps:
 	poetry install

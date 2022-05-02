@@ -8,9 +8,11 @@ authors = ["Josiah Campbell <9521010+jocmp@users.noreply.github.com>"]
 python = "^3.10"
 Flask = "^2.1.2"
 gunicorn = "^20.1.0"
+spotipy = "^2.19.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
+autopep8 = "^1.6.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

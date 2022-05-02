@@ -1,5 +1,5 @@
 .envrc
-spotcamp/web/static/stylesheets/**
+app/web/static/stylesheets/**
 
 .DS_Store
 
