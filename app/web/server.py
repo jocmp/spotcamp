@@ -1,5 +1,7 @@
-from flask import Flask, render_template, request
+from flask import Flask, redirect, render_template, request
 import spotipy
+import os
+from urllib import parse
 from spotipy.oauth2 import SpotifyClientCredentials
 
 
@@ -8,27 +10,19 @@ app = Flask(__name__)
 spotify = spotipy.Spotify(
     client_credentials_manager=SpotifyClientCredentials())
 
-
 @app.route('/')
 def index():
+    return render_template('index.html')
+
+@app.route('/spotcamp')
+def spotcamp():
     query = request.args.get('q')
-    results = find_results(query=query)
-    return render_template('index.html', results=results)
-
-
-def find_results(query):
     if not query:
-        return []
+        return redirect('/', code=302)
 
-    results = spotify.search(q=query, type='artist')
+    result = parse.urlsplit(query)
+    (_, artist_id) = os.path.split(result.path)
+    artist = spotify.artist(artist_id=artist_id)
 
-    artists = results['artists']['items']
-
-    while results['artists']['next']:
-        results = spotify.next(results)
-        artists.extend(results['artists']['items'])
-
-    results = map(
-        lambda a: f'{a["name"]} with a popularity of {a["popularity"]}', artists)
-
-    return results
+    search_url = f'https://bandcamp.com/search?item_type=b&q={artist["name"]}'
+    return redirect(search_url, code=302)
