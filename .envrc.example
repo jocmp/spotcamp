@@ -1,2 +1,4 @@
 export FLASK_APP=app/web/server
 export FLASK_ENV=development
+export SPOTIPY_CLIENT_ID=REPLACE_ME
+export SPOTIPY_CLIENT_SECRET=REPLACE_ME
