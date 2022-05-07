@@ -1,12 +1,13 @@
 from requests import Response
 import spotipy
 from urllib import parse
+from spotcamp.bandcamp.search_result import SearchResult
 from spotcamp.responses import Response
-import spotcamp.item_types as item_types
+from spotcamp.bandcamp import item_types
 import spotcamp.spotify_resource_types as spotify_resource_types
 
 
-def find(spotify: spotipy.Spotify, query: str | None) -> Response:
+def find(spotify: spotipy.Spotify, query: str | None) -> Response[SearchResult]:
     if not query:
         return Response.failure()
 
@@ -23,7 +24,7 @@ def find(spotify: spotipy.Spotify, query: str | None) -> Response:
     item_type = _spotify_to_bandcamp_item_type(resource_type)
     try:
         search_url = f'https://bandcamp.com/search?item_type={item_type}&q={bandcamp_query}'
-        return Response.success(value=search_url)
+        return Response[list[SearchResult]].success(value=search_url)
     except:
         return Response.failure()
 
