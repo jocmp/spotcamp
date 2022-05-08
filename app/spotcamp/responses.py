@@ -25,6 +25,5 @@ class Response(Generic[T]):
     def failure(value: T = None):
         return Response(value=value, errors=None, status=Status.FAILURE)
 
-
     def is_failure(self) -> Boolean:
         return self.status == Status.FAILURE
