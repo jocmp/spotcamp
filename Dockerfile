@@ -32,9 +32,9 @@ RUN apk add --update --no-cache --virtual .tmp-build-deps \
 
 RUN pip install "poetry==$POETRY_VERSION"
 
-COPY . .
-
 WORKDIR /app
+
+COPY . .
 
 RUN make build
 RUN rm -r styles Makefile
