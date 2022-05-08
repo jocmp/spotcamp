@@ -1,6 +1,6 @@
 from urllib import parse
-from app.spotcamp import spotcamp
-from app.spotcamp.responses import Status
+from spotcamp import spotcamp
+from spotcamp.responses import Status
 
 
 def test_find_artist_when_query_is_empty(mocker):
