@@ -11,9 +11,13 @@ gunicorn = "^20.1.0"
 spotipy = "^2.19.0"
 
 [tool.poetry.dev-dependencies]
-pytest = "^5.2"
+pytest = "^7.1.2"
 autopep8 = "^1.6.0"
+pytest-mock = "^3.7.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[pytest]
+mock_use_standalone_module = true
