@@ -1,9 +1,9 @@
 from requests import Response
 import spotipy
 from urllib import parse
-from app.spotcamp.responses import Response
-import app.spotcamp.item_types as item_types
-import app.spotcamp.spotify_resource_types as spotify_resource_types
+from spotcamp.responses import Response
+import spotcamp.item_types as item_types
+import spotcamp.spotify_resource_types as spotify_resource_types
 
 
 def find(spotify: spotipy.Spotify, query: str | None) -> Response:

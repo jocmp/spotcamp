@@ -1,7 +1,7 @@
 from flask import Flask, redirect, render_template, request
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
-from app.spotcamp import spotcamp, responses
+from spotcamp import spotcamp
 
 app = Flask(__name__)
 
