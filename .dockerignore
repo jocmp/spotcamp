@@ -1,1 +1,7 @@
-app/tests
+tests
+.envrc.example
+.do
+.github
+Technotes
+.gitignore
+README.md

@@ -32,20 +32,15 @@ RUN apk add --update --no-cache --virtual .tmp-build-deps \
 
 RUN pip install "poetry==$POETRY_VERSION"
 
-COPY poetry.lock pyproject.toml /app/
-
-COPY Makefile /app/
+COPY . .
 
 WORKDIR /app
 
+RUN make build
+RUN rm -r styles Makefile
+
 RUN poetry config virtualenvs.create false \
   && poetry install $(test "$IMAGE_ENV" == production && echo "--no-dev") --no-interaction --no-ansi
-
-COPY app /app
-
-RUN make build-styles
-
-RUN rm Makefile
 
 # Make /app/* available to be imported by Python globally to better support several use cases like Alembic migrations.
 ENV PYTHONPATH=/app/

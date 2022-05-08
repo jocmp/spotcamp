@@ -1,5 +1,5 @@
 .envrc
-app/web/static/stylesheets/*
+web/static/stylesheets/*
 
 .DS_Store
 
