@@ -17,7 +17,7 @@ def index():
 @app.route('/spotcamp')
 def get_spotcamp():
     query = request.args.get('q')
-    response = spotcamp.find_artists(spotify=spotify, query=query)
+    response = spotcamp.find(spotify=spotify, query=query)
 
     if response.is_failure():
         return redirect('/', code=302)
