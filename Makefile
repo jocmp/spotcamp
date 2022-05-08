@@ -7,10 +7,9 @@ build-styles:
 	sass styles:web/static/stylesheets
 
 style-watch:
-	sass --watch app/styles:app/web/static/stylesheets
+	sass --watch styles:web/static/stylesheets
 
-build:
-	sass app/styles:app/web/static/stylesheets
+build: build-styles
 
 deps:
 	poetry install
