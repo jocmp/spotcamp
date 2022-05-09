@@ -30,3 +30,8 @@ def get_spotcamp():
         item_name=response_value['item_name'],
         search_results=response_value['search_results']
     )
+
+
+@app.route('/service-worker.js')
+def get_service_worker():
+    return app.send_static_file('service-worker.js')
