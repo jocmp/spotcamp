@@ -23,6 +23,7 @@
     "method": "GET",
     "enctype": "application/x-www-form-urlencoded",
     "params": {
+      "title": "q",
       "text": "q",
       "url": "q"
     }
