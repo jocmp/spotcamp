@@ -15,14 +15,15 @@
     }
   ],
   "start_url": "/",
-  "background_color": "#ffffff",
+  "background_color": "#8FBC8B",
   "display": "standalone",
-  "theme_color": "#ffffff",
+  "theme_color": "#8FBC8B",
   "share_target": {
     "action": "/spotcamp",
     "method": "GET",
     "enctype": "application/x-www-form-urlencoded",
     "params": {
+      "text": "q",
       "url": "q"
     }
   }
