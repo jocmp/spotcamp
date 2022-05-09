@@ -22,4 +22,11 @@ def get_spotcamp():
     if response.is_failure():
         return redirect('/', code=302)
 
-    return redirect(response.value, code=302)
+    response_value = response.value
+    return render_template(
+        'spotcamp.html',
+        search_url=response_value['search_url'],
+        resource_type=response_value['resource_type'],
+        item_name=response_value['item_name'],
+        search_results=response_value['search_results']
+    )

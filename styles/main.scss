@@ -6,11 +6,13 @@
 @import "components/buttons";
 @import "components/forms";
 @import "components/tables";
-// Import add-ons here...
 @import "components/overrides";
 @import "components/print";
-
+@import "components/body";
+@import "components/search-results";
+@import "components/search-result";
 @import "pages/spotcamp-search";
+@import "pages/spotcamp-layout";
 
 .grid-highlight {
   background-color: #f7f7f7;

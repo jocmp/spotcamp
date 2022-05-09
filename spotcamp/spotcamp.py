@@ -1,29 +1,39 @@
+from typing import Any
 from requests import Response
 import spotipy
 from urllib import parse
 from spotcamp.responses import Response
-import spotcamp.item_types as item_types
+from spotcamp.bandcamp import item_types, parser
 import spotcamp.spotify_resource_types as spotify_resource_types
 
 
-def find(spotify: spotipy.Spotify, query: str | None) -> Response:
+def find(spotify: spotipy.Spotify, query: str | None, parser: parser = parser) -> Response[dict[str, Any]]:
     if not query:
         return Response.failure()
 
     result = parse.urlsplit(query)
     (resource_type, resource_id) = [
         s for s in result.path.split('/') if len(s) > 0]
-    bandcamp_query = _build_bandcamp_query(
-        item_name=_find_name(
-            spotify=spotify,
-            resource_id=resource_id,
-            resource_type=resource_type
-        )
+    item_name = _find_name(
+        spotify=spotify,
+        resource_id=resource_id,
+        resource_type=resource_type
     )
+    bandcamp_query = _build_bandcamp_query(item_name=item_name)
     item_type = _spotify_to_bandcamp_item_type(resource_type)
     try:
         search_url = f'https://bandcamp.com/search?item_type={item_type}&q={bandcamp_query}'
-        return Response.success(value=search_url)
+
+        results = parser.parse_page(url=search_url)
+
+        response_value = {
+            'search_url': search_url,
+            'search_results': results,
+            'resource_type': resource_type,
+            'item_name': item_name
+        }
+
+        return Response.success(value=response_value)
     except:
         return Response.failure()
 

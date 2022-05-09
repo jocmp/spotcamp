@@ -19,11 +19,14 @@ def test_find_artist_when_query_url_is_present(mocker):
     bandcamp_query = parse.quote(result_artist_name)
     spotify.artist.return_value = {'name': result_artist_name}
 
-    response = spotcamp.find(query=query, spotify=spotify)
+    parser = mocker.Mock()
+    parser.parse_page.return_value = []
+
+    response = spotcamp.find(query=query, spotify=spotify, parser=parser)
 
     spotify.artist.assert_called_with(artist_id=artist_id)
     assert response.status == Status.SUCCESS
-    assert response.value == f'https://bandcamp.com/search?item_type=b&q={bandcamp_query}'
+    assert response.value['search_url'] == f'https://bandcamp.com/search?item_type=b&q={bandcamp_query}'
 
 
 def test_find_song_with_artist(mocker):
@@ -36,8 +39,11 @@ def test_find_song_with_artist(mocker):
         'name': result_track_name
     }
 
-    response = spotcamp.find(query=query, spotify=spotify)
+    parser = mocker.Mock()
+    parser.parse_page.return_value = []
+
+    response = spotcamp.find(query=query, spotify=spotify, parser=parser)
 
     spotify.track.assert_called_with(track_id=track_id)
     assert response.status == Status.SUCCESS
-    assert response.value == f'https://bandcamp.com/search?item_type=t&q={bandcamp_query}'
+    assert response.value['search_url'] == f'https://bandcamp.com/search?item_type=t&q={bandcamp_query}'
