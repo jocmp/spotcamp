@@ -26,7 +26,8 @@ def test_find_artist_when_query_url_is_present(mocker):
 
     spotify.artist.assert_called_with(artist_id=artist_id)
     assert response.status == Status.SUCCESS
-    assert response.value['search_url'] == f'https://bandcamp.com/search?item_type=b&q={bandcamp_query}'
+    assert response.value[
+        'search_url'] == f'https://bandcamp.com/search?item_type=b&q={bandcamp_query}'
 
 
 def test_find_song_with_artist(mocker):
@@ -46,4 +47,5 @@ def test_find_song_with_artist(mocker):
 
     spotify.track.assert_called_with(track_id=track_id)
     assert response.status == Status.SUCCESS
-    assert response.value['search_url'] == f'https://bandcamp.com/search?item_type=t&q={bandcamp_query}'
+    assert response.value[
+        'search_url'] == f'https://bandcamp.com/search?item_type=t&q={bandcamp_query}'
