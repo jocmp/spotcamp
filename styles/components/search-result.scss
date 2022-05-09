@@ -14,13 +14,15 @@
   .search-result--image {
     width: 7rem;
     height: auto;
-    // https://pavellaptev.medium.com/css-weekly-2-an-image-on-the-left-text-on-the-left-a5e59b2acdb5
-    object-fit: contain;
     align-self: flex-start;
     margin-right: 0.5rem;
     border-radius: 0.3rem;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+    object-position: 0% 0%;
   }
 
+  // https://pavellaptev.medium.com/css-weekly-2-an-image-on-the-left-text-on-the-left-a5e59b2acdb5
   .search-result--text {
     flex: 1 1 auto;
   }

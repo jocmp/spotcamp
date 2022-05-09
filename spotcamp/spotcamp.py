@@ -1,3 +1,4 @@
+import structlog
 from typing import Any
 from requests import Response
 import spotipy
@@ -32,9 +33,9 @@ def find(spotify: spotipy.Spotify, query: str | None, parser: parser = parser) -
             'resource_type': resource_type,
             'item_name': item_name
         }
-
         return Response.success(value=response_value)
-    except:
+    except Exception as error:
+        log_error(error, resource_type=resource_type, resource_id=resource_id)
         return Response.failure()
 
 
@@ -74,3 +75,12 @@ def _spotify_to_bandcamp_item_type(resource_type) -> str:
             return item_types.TRACK
         case spotify_resource_types.ALBUM:
             return item_types.ALBUM
+
+
+def log_error(error, resource_type, resource_id):
+    structlog.get_logger().error(
+        'spotcamp.find.error',
+        resource_type=resource_type,
+        resource_id=resource_id,
+        error_class_name=error.__class__.__name__
+    )

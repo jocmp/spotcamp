@@ -19,11 +19,11 @@ def parse_body(soup: BeautifulSoup):
 
 def _build_search_result(tag: Tag) -> SearchResult:
     art_url = tag.find(class_='art').find('img').attrs['src']
-    heading = _clean_text(tag.find(class_='heading').get_text())
-    sub_heading = _clean_text(tag.find(class_='subhead').get_text())
-    released = _clean_text(tag.find(class_='released').get_text())
+    heading = _tag_text(tag.find(class_='heading'))
+    sub_heading = _tag_text(tag.find(class_='subhead'))
+    released = _tag_text(tag.find(class_='released'))
     item_url = tag.find(class_='itemurl').find('a').attrs['href']
-    item_type = _clean_text(tag.find(class_='itemtype').get_text())
+    item_type = _tag_text(tag.find(class_='itemtype'))
 
     return SearchResult(
         art_url=art_url,
@@ -40,3 +40,9 @@ def _clean_text(text):
         return ''
     cleaned = text.replace('\n', ' ').strip()
     return re.sub(r"\s\s+", " ", cleaned)
+
+def _tag_text(tag):
+    if not tag:
+        return ''
+
+    return _clean_text(text=tag.get_text())
