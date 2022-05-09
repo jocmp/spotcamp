@@ -5,7 +5,7 @@ from bs4.element import Tag
 from spotcamp.bandcamp.search_result import SearchResult
 
 
-def parse_page(url) -> list[SearchResult]:
+def parse_page(url: str) -> list[SearchResult]:
     with urlopen(url) as response:
         body = response.read()
     soup = BeautifulSoup(body, 'html.parser')

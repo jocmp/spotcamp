@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}index{% endblock %}
+{% block content %}
+<div class="spotcamp-layout">
+  <div class="container">
+    <h1>the green music util</h1>
+    <div class="spotcamp-layout--result-hint">
+      Showing {{resource_type}} results for <a href="{{search_url}}">{{item_name}}</a>
+    </div>
+    <div class="spotcamp-layout--retry-search">
+      <a href="/">Search again</a>
+    </div>
+    <div class="row row-auto">
+      {% with search_results=search_results %}
+        {% include 'search-results.html' %}
+      {% endwith %}
+    </div>
+  </div>
+</div>
+{% endblock %}
